@@ -106,3 +106,12 @@ document.getElementById("clearBtn").addEventListener("click", function () {
   document.getElementById("results").innerHTML =
     "<p>Your search results will appear here.</p>";
 });
+document.getElementById("bloodFinderBtn").addEventListener("click", function () {
+    document.getElementById("bloodGroup").focus();
+    document.querySelector(".search-box").scrollIntoView({ behavior: "smooth" });
+});
+
+document.getElementById("nearbyBtn").addEventListener("click", function () {
+    document.getElementById("location").focus();
+    document.querySelector(".search-box").scrollIntoView({ behavior: "smooth" });
+});
