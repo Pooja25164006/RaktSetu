@@ -76,7 +76,7 @@ searchBtn.addEventListener("click", function () {
         return bank.group === bloodGroup &&
             bank.city.toLowerCase().includes(location.toLowerCase());
     });
-
+     saveSearchHistory(bloodGroup,location);
     if (matchedBanks.length === 0) {
         results.innerHTML = "<h3>No matching demo results found.</h3>";
         return;
@@ -91,10 +91,14 @@ searchBtn.addEventListener("click", function () {
                 <p>📍 Location: ${bank.city}</p>
                 <p>🏥 Address: ${bank.address}</p>
                 <p>Blood Group: ${bank.group}</p>
+                <p>🧪 Units Available: ${bank.units}</p>
                 <p>Demo Units: ${bank.units}</p>
                 <p>Distance: ${bank.distance}</p>
                 <p>Contact: ${bank.phone}</p>
                 <span class="available">Demo Availability</span>
+                <button type="button" onclick="contactBank('${bank.name}')">
+  📞 Contact Blood Bank
+</button>
             </div>
         `;
     });
@@ -115,3 +119,100 @@ document.getElementById("nearbyBtn").addEventListener("click", function () {
     document.getElementById("location").focus();
     document.querySelector(".search-box").scrollIntoView({ behavior: "smooth" });
 });
+// =====================================
+// Search History
+// =====================================
+
+function saveSearchHistory(group, city) {
+  let history = JSON.parse(
+    localStorage.getItem("raktsetuHistory") || "[]"
+  );
+
+  history.unshift({
+    group: group,
+    city: city,
+    time: new Date().toLocaleString()
+  });
+
+  history = history.slice(0, 5);
+
+  localStorage.setItem(
+    "raktsetuHistory",
+    JSON.stringify(history)
+  );
+
+  displaySearchHistory();
+}
+
+function displaySearchHistory() {
+  const historyList = document.getElementById("historyList");
+
+  if (!historyList) return;
+
+  const history = JSON.parse(
+    localStorage.getItem("raktsetuHistory") || "[]"
+  );
+
+  if (history.length === 0) {
+    historyList.innerHTML = "<p>No searches yet.</p>";
+    return;
+  }
+
+  historyList.innerHTML = history.map(function(item) {
+    return `
+      <div class="result-card">
+        <h3>🩸 ${item.group}</h3>
+        <p>📍 ${item.city}</p>
+        <p>🕒 ${item.time}</p>
+      </div>
+    `;
+  }).join("");
+}
+
+displaySearchHistory();
+function clearSearchHistory() {
+  localStorage.removeItem("raktsetuHistory");
+  displaySearchHistory();
+}
+// =====================================
+// Current Location
+// =====================================
+
+const locationBtn = document.getElementById("locationBtn");
+const locationStatus = document.getElementById("locationStatus");
+
+if (locationBtn) {
+  locationBtn.addEventListener("click", function () {
+
+    if (!navigator.geolocation) {
+      locationStatus.textContent =
+        "Location is not supported by this browser.";
+      return;
+    }
+
+    locationStatus.textContent =
+      "📍 Getting your location...";
+
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        locationStatus.textContent =
+          `📍 Location detected: ${latitude.toFixed(4)}, ${longitude.toFixed(4)}`;
+      },
+
+      function () {
+        locationStatus.textContent =
+          "❌ Location permission was denied.";
+      }
+    );
+  });
+}
+function showCentreInfo(centreName) {
+  alert(
+    centreName +
+    "\n\nThis is a demo blood centre.\nPlease confirm current blood availability before visiting."
+  );
+}

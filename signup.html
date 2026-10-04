@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RaktSetu - Create Account</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div>
+      <h1>🩸 RaktSetu</h1>
+      <p>Connecting Lives, Connecting Blood Banks</p>
+    </div>
+
+    <a href="index.html" class="login-btn">Home</a>
+  </header>
+
+  <main>
+
+    <section class="search-box">
+      <h2>📝 Create Account</h2>
+
+      <label for="name">Full Name</label>
+      <input
+        type="text"
+        id="name"
+        placeholder="Enter your name"
+      >
+
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="Enter your email"
+      >
+
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Create a password"
+      >
+
+      <label for="confirmPassword">Confirm Password</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        placeholder="Confirm your password"
+      >
+
+      <button type="button" onclick="createAccount()">
+        Create Account
+      </button>
+
+      <p id="signupMessage"></p>
+
+      <p style="text-align:center; margin-top:20px;">
+        Already have an account?
+        <a href="login.html">Login</a>
+      </p>
+
+      <p style="text-align:center; margin-top:12px;">
+        <a href="index.html">← Back to Home</a>
+      </p>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 RaktSetu | Connecting Lives, Connecting Blood Banks</p>
+  </footer>
+
+  <script>
+    function createAccount() {
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const confirmPassword =
+        document.getElementById("confirmPassword").value.trim();
+
+      if (!name || !email || !password || !confirmPassword) {
+        alert("Please fill all fields.");
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+      }
+
+      alert("Account created successfully! Please login.");
+
+      window.location.href = "login.html";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RaktSetu - Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div>
+      <h1>🩸 RaktSetu</h1>
+      <p>Connecting Lives, Connecting Blood Banks</p>
+    </div>
+
+    <a href="index.html" class="login-btn">Home</a>
+  </header>
+
+  <main>
+
+    <section class="search-box">
+      <h2>🔐 Login to RaktSetu</h2>
+
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="Enter your email"
+      >
+
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter your password"
+      >
+
+      <button type="button" onclick="loginUser()">
+        Login
+      </button>
+
+      <p id="loginMessage"></p>
+
+      <p style="text-align:center; margin-top:20px;">
+        New user?
+        <a href="signup.html">Create Account</a>
+      </p>
+
+      <p style="text-align:center; margin-top:12px;">
+        <a href="index.html">← Back to Home</a>
+      </p>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 RaktSetu | Connecting Lives, Connecting Blood Banks</p>
+  </footer>
+
+  <script>
+    function loginUser() {
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (email === "" || password === "") {
+        alert("Please enter email and password.");
+        return;
+      }
+
+      alert("Login successful! Welcome to RaktSetu.");
+      window.location.href="dashboard.html";
+    }
+
+    function showSignup() {
+      alert("Demo signup page coming soon.");
+    }
+  </script>
+
+</body>
+</html>

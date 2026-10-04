@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>RaktSetu - Dashboard</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ===== DASHBOARD ===== */
+
+    .dashboard-main {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .dashboard-box {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 22px;
+      padding: 40px;
+      box-shadow: 0 15px 40px rgba(70, 45, 50, 0.12);
+    }
+
+    .dashboard-title {
+      text-align: center;
+      color: #7b2f4b;
+      margin-bottom: 10px;
+      font-size: 32px;
+    }
+
+    .dashboard-welcome {
+      text-align: center;
+      color: #5f5960;
+      margin-bottom: 35px;
+      font-size: 17px;
+    }
+
+    .dashboard-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .dashboard-card {
+      padding: 28px 22px;
+      border-radius: 18px;
+      text-align: center;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
+    .dashboard-card:nth-child(1) {
+      background: linear-gradient(145deg, #fff0f3, #ffffff);
+      border-top: 5px solid #d47a92;
+    }
+
+    .dashboard-card:nth-child(2) {
+      background: linear-gradient(145deg, #eef5ff, #ffffff);
+      border-top: 5px solid #7198d1;
+    }
+
+    .dashboard-card:nth-child(3) {
+      background: linear-gradient(145deg, #f4efff, #ffffff);
+      border-top: 5px solid #9b7ac7;
+    }
+
+    .dashboard-card h3 {
+      color: #63364a;
+      font-size: 21px;
+      margin: 5px 0 12px;
+    }
+
+    .dashboard-card p {
+      color: #5f5960;
+      line-height: 1.6;
+      margin: 0 0 20px;
+    }
+
+    .dashboard-link {
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(135deg, #8f3d5a, #b85c78);
+      color: white;
+      padding: 11px 20px;
+      border-radius: 9px;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .dashboard-link:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, #713047, #963f5d);
+    }
+
+    .logout-btn {
+      display: block;
+      width: 100%;
+      margin-top: 35px;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #7b2f4b;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .logout-btn:hover {
+      background: #5f2439;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 800px) {
+      .dashboard-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .dashboard-box {
+        padding: 25px 18px;
+      }
+
+      .dashboard-title {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div>
+      <h1>🩸 RaktSetu</h1>
+      <p>Connecting Lives, Connecting Blood Banks</p>
+    </div>
+
+    <a href="index.html" class="login-btn">Home</a>
+  </header>
+
+  <main class="dashboard-main">
+
+    <section class="dashboard-box">
+
+      <h2 class="dashboard-title">
+        👋 Welcome to RaktSetu Dashboard
+      </h2>
+
+      <p class="dashboard-welcome">
+        You are successfully logged in. What would you like to do?
+      </p>
+
+      <div class="dashboard-cards">
+
+        <div class="dashboard-card">
+          <div>
+            <h3>🔎 Find Blood</h3>
+            <p>
+              Search blood banks using blood group
+              and city.
+            </p>
+          </div>
+
+          <a
+            href="index.html#searchSection"
+            class="dashboard-link">
+            Search Blood
+          </a>
+        </div>
+
+        <div class="dashboard-card">
+          <div>
+            <h3>📍 Nearby Centres</h3>
+            <p>
+              Explore nearby blood centres
+              and their information.
+            </p>
+          </div>
+
+          <a
+            href="index.html#nearbyCentres"
+            class="dashboard-link">
+            View Centres
+          </a>
+        </div>
+
+        <div class="dashboard-card">
+          <div>
+            <h3>📋 Search History</h3>
+            <p>
+              View your recent blood searches
+              and locations.
+            </p>
+          </div>
+
+          <a
+            href="index.html#historySection"
+            class="dashboard-link">
+            View History
+          </a>
+        </div>
+
+      </div>
+
+      <button
+        type="button"
+        class="logout-btn"
+        onclick="logoutUser()">
+        🚪 Logout
+      </button>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      © 2026 RaktSetu | Connecting Lives, Connecting Blood Banks
+    </p>
+  </footer>
+
+  <script>
+    function logoutUser() {
+      window.location.href = "login.html";
+    }
+  </script>
+
+</body>
+</html>
